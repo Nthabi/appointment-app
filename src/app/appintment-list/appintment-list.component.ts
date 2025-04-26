@@ -13,7 +13,17 @@ export class AppintmentListComponent {
   appointments: Appointment[] = [];
 
   addAppointment() {
-    console.log(this.newAppointmentDate + " " + this.newAppointmentTitle);
+    
+    let appointment: Appointment = {
+      id: Date.now(),
+      title: this.newAppointmentTitle,
+      date: this.newAppointmentDate
+    }
+
+    this.appointments.push(appointment);
+    this.newAppointmentDate = new Date();
+    this.newAppointmentTitle = "";
+
   }
 
 }
