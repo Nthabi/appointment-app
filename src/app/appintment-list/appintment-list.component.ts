@@ -1,4 +1,5 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, WritableSignal } from '@angular/core';
+import { Appointment } from '../models/appointment';
 
 @Component({
   selector: 'app-appintment-list',
@@ -7,17 +8,12 @@ import { Component, signal } from '@angular/core';
 })
 export class AppintmentListComponent {
 
-  counter = signal(0);
+  newAppointmentTitle: string = "";
+  newAppointmentDate: Date = new Date();
+  appointments: Appointment[] = [];
 
-  increment() {
-    this.counter.update((value) => value+1);
+  addAppointment() {
+    console.log(this.newAppointmentDate + " " + this.newAppointmentTitle);
   }
 
-  decrement() {
-    this.counter.update(value => value-1);
-  }
-
-  reset() {
-    this.counter.set(0);
-  }
 }
