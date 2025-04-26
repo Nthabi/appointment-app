@@ -24,10 +24,13 @@ export class AppintmentListComponent {
     this.newAppointmentDate = new Date();
     this.newAppointmentTitle = "";
 
+    localStorage.setItem("appointments", JSON.stringify(this.appointments));
+
   }
 
   deleteAppointment(index: number) {
     this.appointments.splice(index, 1);
+    localStorage.setItem("appointments", JSON.stringify(this.appointments));
   }
 
 }
