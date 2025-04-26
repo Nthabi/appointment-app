@@ -1,16 +1,24 @@
-import { Component, signal, WritableSignal } from '@angular/core';
+import { Component, signal, WritableSignal, OnInit } from '@angular/core';
 import { Appointment } from '../models/appointment';
+
 
 @Component({
   selector: 'app-appintment-list',
   templateUrl: './appintment-list.component.html',
   styleUrl: './appintment-list.component.css'
 })
-export class AppintmentListComponent {
+export class AppintmentListComponent implements OnInit{
 
   newAppointmentTitle: string = "";
   newAppointmentDate: Date = new Date();
   appointments: Appointment[] = [];
+
+  ngOnInit(): void {
+    let savedAppointments =  localStorage.getItem('appointments');
+
+    this.appointments = savedAppointments ? JSON.parse(savedAppointments): []; 
+    
+  }
 
   addAppointment() {
     
